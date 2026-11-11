@@ -21,7 +21,7 @@ export function LogoIcon({
   const isLight = variant === "light";
   // The arch and eye contour: crisp white for dark headers/footers, deep navy for white backgrounds
   const mainColor = isLight ? "#FFFFFF" : "#0B1A2E";
-  // The iconic center pupil: Ruby Red as in the original logo!
+  // The iconic center pupil: Ruby Red as in the original logo
   const pupilColor = "#D32F2F";
 
   return (
@@ -67,38 +67,30 @@ export default function Logo({
   iconOnly = false,
   className = "",
 }: LogoProps) {
-  const iconSizes = {
-    sm: 30,
-    md: 40,
-    lg: 52,
-  };
-
   const isLight = variant === "light";
 
   return (
     <Link
       href="/"
-      className={`group inline-flex items-center gap-3 transition-opacity hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 rounded-sm ${className}`}
+      className={`group inline-flex items-center gap-2 sm:gap-3 transition-opacity hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 rounded-sm min-w-0 ${className}`}
       aria-label="Accord Knowledge Group Home"
     >
-      <LogoIcon size={iconSizes[size]} variant={variant} />
+      {/* Responsive Logo Icon: 32px on mobile, 40px on desktop */}
+      <div className="shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+        <LogoIcon size={34} variant={variant} className="sm:hidden" />
+        <LogoIcon size={40} variant={variant} className="hidden sm:block" />
+      </div>
 
       {!iconOnly && (
-        <div className="flex flex-col leading-tight">
+        <div className="flex flex-col leading-tight min-w-0">
           <span
-            className={`font-bold tracking-tight uppercase ${
+            className={`font-bold tracking-tight uppercase truncate text-xs sm:text-base ${
               isLight ? "text-white" : "text-navy-900"
-            } ${
-              size === "sm"
-                ? "text-sm tracking-wider"
-                : size === "lg"
-                ? "text-xl tracking-wide"
-                : "text-base tracking-wide"
             }`}
           >
             ACCORD
             <span
-              className={`ml-1.5 font-light tracking-widest ${
+              className={`ml-1 font-light tracking-wider text-[11px] sm:text-base ${
                 isLight ? "text-gold-300" : "text-gold-600"
               }`}
             >
@@ -108,7 +100,7 @@ export default function Logo({
 
           {showTagline && (
             <span
-              className={`text-[9.5px] uppercase tracking-[0.2em] font-medium mt-0.5 ${
+              className={`text-[7.5px] sm:text-[9.5px] uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium mt-0.5 truncate ${
                 isLight ? "text-navy-200" : "text-navy-600"
               }`}
             >

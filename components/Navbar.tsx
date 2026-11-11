@@ -59,14 +59,14 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isTransparent
-            ? "bg-navy-950/80 backdrop-blur-md border-b border-white/10 py-4"
-            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3"
+            ? "bg-navy-950/85 backdrop-blur-md border-b border-white/10 py-2.5 sm:py-3.5"
+            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-2.5 sm:py-3"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-2 sm:gap-4">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="min-w-0 shrink">
               <Logo
                 variant={isTransparent ? "light" : "dark"}
                 size="md"
@@ -104,7 +104,7 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Desktop Right CTA */}
+            {/* Desktop Right CTA Button */}
             <div className="hidden sm:flex items-center gap-3">
               <a
                 href={COMPANY.primaryPhone.href}
@@ -119,23 +119,27 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* Mobile Hamburger Button */}
-            <div className="flex lg:hidden items-center gap-2">
+            {/* Mobile Actions: Phone Pill + Hamburger Button (Always visible together) */}
+            <div className="flex lg:hidden items-center gap-1.5 shrink-0">
+              {/* Quick Call Pill */}
               <a
                 href={COMPANY.primaryPhone.href}
-                className={`sm:hidden p-2 rounded-md ${
+                className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   isTransparent
-                    ? "text-gold-400 hover:bg-white/10"
-                    : "text-navy-900 hover:bg-slate-100"
+                    ? "bg-gold-500/20 hover:bg-gold-500 text-gold-300 hover:text-navy-950 border border-gold-400/40"
+                    : "bg-navy-900 text-white hover:bg-navy-800"
                 }`}
-                aria-label="Call Accord Knowledge Group"
+                aria-label="Call 8547045170"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-3.5 h-3.5" />
+                <span className="font-mono text-[11px] font-bold">Call</span>
               </a>
+
+              {/* Hamburger Menu Toggle */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-2 rounded-md transition-colors ${
+                className={`p-1.5 rounded-md transition-colors ${
                   isTransparent
                     ? "text-slate-200 hover:text-white hover:bg-white/10"
                     : "text-slate-700 hover:text-navy-900 hover:bg-slate-100"
@@ -166,7 +170,7 @@ export default function Navbar() {
           >
             <div>
               {/* Header inside mobile menu */}
-              <div className="flex items-center justify-between pb-6 border-b border-slate-100">
+              <div className="flex items-center justify-between pb-5 border-b border-slate-100">
                 <Logo variant="dark" size="sm" showTagline={true} />
                 <button
                   type="button"
@@ -190,9 +194,9 @@ export default function Navbar() {
                       key={link.label}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center justify-between px-3 py-3 text-base rounded-md font-medium transition-colors ${
+                      className={`flex items-center justify-between px-3.5 py-3 text-base rounded-md font-medium transition-colors ${
                         isActive
-                          ? "bg-slate-100 text-navy-950 font-semibold border-l-4 border-gold-500 pl-3"
+                          ? "bg-slate-100 text-navy-950 font-semibold border-l-4 border-gold-500 pl-3.5"
                           : "text-slate-700 hover:bg-slate-50 hover:text-navy-900"
                       }`}
                     >
