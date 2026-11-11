@@ -7,80 +7,67 @@ export default function Process() {
       step: "01",
       name: "Understand",
       icon: Search,
-      description: "We understand your accounting, taxation or business requirement through a clear initial discussion.",
+      desc: "Discuss your accounting, tax, or business requirement.",
     },
     {
       step: "02",
       name: "Plan",
       icon: Compass,
-      description: "We identify the appropriate documentation, statutory checklist, and procedural steps needed.",
+      desc: "Identify the documents and statutory process needed.",
     },
     {
       step: "03",
       name: "Execute",
       icon: CheckCircle2,
-      description: "We assist with the required accounting records, statutory filing, or consultancy execution.",
+      desc: "Complete the filing, registration, or accounting work.",
     },
     {
       step: "04",
       name: "Support",
       icon: Headphones,
-      description: "We provide guidance for ongoing compliance, queries, and future regulatory requirements.",
+      desc: "Guidance for ongoing compliance and future queries.",
     },
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+    <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-gold-600">
-            Methodical Engagement
+            Our Process
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 tracking-tight">
-            How We Help
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy-950 tracking-tight">
+            How We Work
           </h2>
-          <p className="text-base text-slate-600 leading-relaxed">
-            A structured, 4-step workflow that ensures clarity, thoroughness, and statutory precision at every stage.
-          </p>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Desktop Connecting Line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-slate-200 -translate-y-8 z-0" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-            {steps.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="relative flex flex-col items-start bg-slate-50 lg:bg-white p-6 lg:p-4 rounded-xl border border-slate-200/80 lg:border-none"
-                >
-                  {/* Step Badge with icon */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center font-bold text-base shadow-sm ring-4 ring-white">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className="font-mono text-sm font-bold text-gold-600 bg-gold-50 px-2.5 py-0.5 rounded border border-gold-200">
-                      STEP {item.step}
-                    </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-slate-50 p-5 rounded-xl border border-slate-200/80"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-9 h-9 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center">
+                    <Icon className="w-4 h-4" />
                   </div>
-
-                  <h3 className="text-lg font-bold text-navy-950 tracking-tight mb-2">
-                    {item.name}
-                  </h3>
-
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {item.description}
-                  </p>
+                  <span className="font-mono text-xs font-bold text-gold-700 bg-gold-50 px-2 py-0.5 rounded border border-gold-200">
+                    {item.step}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
+                <h3 className="text-sm font-bold text-navy-950 mb-1">
+                  {item.name}
+                </h3>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
-

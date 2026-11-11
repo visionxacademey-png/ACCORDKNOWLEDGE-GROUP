@@ -6,68 +6,54 @@ export default function WhyChooseUs() {
     {
       icon: Layers,
       title: "Comprehensive Support",
-      description:
-        "Accounting, taxation, compliance and consultancy services under one roof. Eliminate the friction of engaging multiple disparate consultants.",
+      description: "Accounting, taxation, and registration under one roof.",
     },
     {
       icon: Briefcase,
-      title: "Professional Approach",
-      description:
-        "Clear and organized handling of financial and business requirements with strict adherence to statutory timelines and documentation standards.",
+      title: "Professional Handling",
+      description: "Clear and organized handling of compliance and statutory filing.",
     },
     {
       icon: Target,
-      title: "Business-Focused Solutions",
-      description:
-        "Services designed around practical business and compliance needs, ensuring feasible workflows for local commercial firms and entrepreneurs.",
+      title: "Practical Solutions",
+      description: "Services tailored around everyday business and commercial needs.",
     },
     {
       icon: PhoneCall,
-      title: "Convenient Consultation",
-      description:
-        "Easy access through direct phone numbers and accessible in-person consultation right at our Payangadi office.",
+      title: "Direct Consultation",
+      description: "Fast assistance via phone or in person at our Payangadi office.",
     },
   ];
 
   return (
-    <section id="why-us" className="py-20 lg:py-28 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+    <section id="why-us" className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-gold-600">
-            Dedicated Advisory
+            Why Accord
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy-950 tracking-tight">
             Why Choose Accord Knowledge Group?
           </h2>
-          <p className="text-base text-slate-600 leading-relaxed">
-            A disciplined, practical approach to financial management, statutory compliance, and corporate documentation.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {points.map((pt, idx) => {
             const Icon = pt.icon;
             return (
               <div
                 key={idx}
-                className="group relative bg-white rounded-xl p-7 border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between"
+                className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm text-center sm:text-left"
               >
-                <div>
-                  <div className="w-12 h-12 rounded-lg bg-navy-900 text-gold-400 group-hover:bg-gold-500 group-hover:text-navy-950 flex items-center justify-center transition-colors mb-5 shadow-sm">
-                    <Icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-105" />
-                  </div>
-                  <h3 className="text-lg font-bold text-navy-950 tracking-tight mb-2.5">
-                    {pt.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {pt.description}
-                  </p>
+                <div className="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center mb-3 mx-auto sm:mx-0">
+                  <Icon className="w-5 h-5" />
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs text-slate-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold-500" />
-                  <span>Accord Principle 0{idx + 1}</span>
-                </div>
+                <h3 className="text-sm font-bold text-navy-950 mb-1">
+                  {pt.title}
+                </h3>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {pt.description}
+                </p>
               </div>
             );
           })}
@@ -76,4 +62,3 @@ export default function WhyChooseUs() {
     </section>
   );
 }
-
