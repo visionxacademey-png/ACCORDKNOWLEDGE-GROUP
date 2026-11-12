@@ -51,7 +51,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Floating Pill Navbar matching the modern reference design */}
+      {/* Floating Pill Navbar matching the modern reference design with global corporate colors */}
       <header className="fixed top-2.5 sm:top-4 inset-x-3 sm:inset-x-6 z-40 max-w-7xl mx-auto transition-all duration-300">
         <div
           className={`w-full rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 flex items-center justify-between shadow-lg shadow-black/[0.04] border ${
@@ -91,26 +91,26 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop Right CTA Pill */}
+          {/* Desktop Right CTA Pill (Corporate Deep Navy with Gold icon) */}
           <div className="hidden sm:flex items-center gap-3">
             <a
               href={COMPANY.primaryPhone.href}
-              className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold rounded-full bg-[#E86025] hover:bg-[#d4521a] text-white shadow-sm transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold rounded-full bg-navy-900 hover:bg-navy-850 text-white shadow-sm transition-all"
             >
-              <Phone className="w-3.5 h-3.5 fill-white/20 text-white" />
+              <Phone className="w-3.5 h-3.5 text-gold-400" />
               <span>Call: {COMPANY.primaryPhone.display}</span>
             </a>
           </div>
 
-          {/* Mobile Right Circular Controls (Matching Reference: Circular Call Icon + Circular Menu Icon) */}
+          {/* Mobile Right Circular Controls */}
           <div className="flex lg:hidden items-center gap-2 shrink-0">
             {/* Circular Call Button */}
             <a
               href={COMPANY.primaryPhone.href}
-              className="w-9 h-9 rounded-full bg-slate-50 hover:bg-amber-50 border border-slate-200 flex items-center justify-center text-slate-700 hover:text-amber-600 shadow-xs transition-colors"
+              className="w-9 h-9 rounded-full bg-slate-50 hover:bg-gold-50 border border-slate-200 flex items-center justify-center text-slate-700 hover:text-gold-700 shadow-xs transition-colors"
               aria-label="Call 8547045170"
             >
-              <Phone className="w-4 h-4 text-[#E86025]" />
+              <Phone className="w-4 h-4 text-gold-600" />
             </a>
 
             {/* Circular Hamburger Menu Toggle Button */}
@@ -169,7 +169,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                       className={`flex items-center justify-between px-3.5 py-3 text-base rounded-xl font-medium transition-colors ${
                         isActive
-                          ? "bg-amber-50 text-amber-950 font-semibold border-l-4 border-[#E86025] pl-3.5"
+                          ? "bg-slate-100 text-navy-950 font-semibold border-l-4 border-gold-500 pl-3.5"
                           : "text-slate-700 hover:bg-slate-50 hover:text-navy-900"
                       }`}
                     >
@@ -189,35 +189,35 @@ export default function Navbar() {
                   <Link
                     href="/services/accounts"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-amber-600 py-1"
+                    className="hover:text-gold-600 py-1"
                   >
                     • Accounts &amp; Bookkeeping
                   </Link>
                   <Link
                     href="/services/gst-registration"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-amber-600 py-1"
+                    className="hover:text-gold-600 py-1"
                   >
                     • GST Registration &amp; Returns
                   </Link>
                   <Link
                     href="/services/income-tax"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-amber-600 py-1"
+                    className="hover:text-gold-600 py-1"
                   >
                     • Income Tax Returns
                   </Link>
                   <Link
                     href="/services/company-llp-formation"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-amber-600 py-1"
+                    className="hover:text-gold-600 py-1"
                   >
                     • Company &amp; LLP Formation
                   </Link>
                   <Link
                     href="/services/project-report"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-amber-600 py-1"
+                    className="hover:text-gold-600 py-1"
                   >
                     • Project Report for Bank Finance
                   </Link>
@@ -229,9 +229,9 @@ export default function Navbar() {
             <div className="pt-6 mt-6 border-t border-slate-100">
               <a
                 href={COMPANY.primaryPhone.href}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#E86025] hover:bg-[#d4521a] text-white font-semibold rounded-full shadow text-center text-sm"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-navy-900 hover:bg-navy-850 text-white font-semibold rounded-full shadow text-center text-sm"
               >
-                <Phone className="w-4 h-4 fill-white/20 text-white" />
+                <Phone className="w-4 h-4 text-gold-400" />
                 <span>Call {COMPANY.primaryPhone.display}</span>
               </a>
               <p className="mt-3 text-xs text-center text-slate-500 leading-relaxed">
