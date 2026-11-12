@@ -109,35 +109,17 @@ export default function Hero() {
       {/* Dynamic spacer for mobile to push buttons gracefully to the bottom */}
       <div className="flex-1 min-h-[10px] md:hidden" />
 
-      {/* Mobile-Only Bottom Action Area (Matching Reference Design) */}
-      <div className="md:hidden relative max-w-7xl mx-auto px-4 sm:px-6 w-full z-10 pb-1 xs:pb-2">
-        <div className="max-w-md mx-auto space-y-2">
+      {/* Mobile-Only Bottom Action Area (Single Clean Action Pill) */}
+      <div className="md:hidden relative max-w-7xl mx-auto px-4 sm:px-6 w-full z-10 pb-3 xs:pb-4">
+        <div className="max-w-md mx-auto">
           {/* Primary Action */}
           <Link
             href="#services"
-            className="w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 xs:py-3 rounded-full bg-navy-900 hover:bg-navy-850 text-white font-bold text-sm xs:text-base shadow-lg shadow-navy-950/25 active:scale-[0.98] transition-all"
+            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-navy-900 hover:bg-navy-850 text-white font-bold text-sm xs:text-base shadow-lg shadow-navy-950/25 active:scale-[0.98] transition-all"
           >
             <span>Explore Our Services</span>
             <ArrowRight className="w-4 h-4 text-gold-400" />
           </Link>
-
-          {/* Secondary Action */}
-          <a
-            href={COMPANY.primaryPhone.href}
-            className="w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 xs:py-3 rounded-full bg-white/95 hover:bg-white text-navy-950 font-bold text-xs xs:text-sm shadow-md border border-slate-200/90 active:scale-[0.98] transition-all"
-          >
-            <div className="w-5 h-5 rounded-full bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-700">
-              <Phone className="w-3 h-3 text-gold-600" />
-            </div>
-            <span>Call Us: {COMPANY.primaryPhone.display}</span>
-          </a>
-
-          {/* Slider Indicator Dots */}
-          <div className="flex items-center justify-center gap-1.5 pt-1.5 pb-0.5" aria-hidden="true">
-            <span className="w-6 h-1 rounded-full bg-gold-500" />
-            <span className="w-1.5 h-1 rounded-full bg-white/80 shadow-xs" />
-            <span className="w-1.5 h-1 rounded-full bg-white/80 shadow-xs" />
-          </div>
         </div>
       </div>
     </section>
