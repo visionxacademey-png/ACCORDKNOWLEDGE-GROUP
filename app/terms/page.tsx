@@ -91,7 +91,9 @@ export default function TermsPage() {
               <br />
               {COMPANY.address.full}
               <br />
-              Direct Lines: 8547045170 / 9446489607 / 0497-2985517
+              Direct Lines: 9072908710 / 9446489607 / 0497-2985517
+              <br />
+              Email: accorderipuram@gmail.com
             </address>
           </div>
         </div>

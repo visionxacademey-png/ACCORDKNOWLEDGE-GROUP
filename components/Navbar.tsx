@@ -108,7 +108,7 @@ export default function Navbar() {
             <a
               href={COMPANY.primaryPhone.href}
               className="w-9 h-9 rounded-full bg-slate-50 hover:bg-gold-50 border border-slate-200 flex items-center justify-center text-slate-700 hover:text-gold-700 shadow-xs transition-colors"
-              aria-label="Call 8547045170"
+              aria-label={`Call ${COMPANY.primaryPhone.display}`}
             >
               <Phone className="w-4 h-4 text-gold-600" />
             </a>

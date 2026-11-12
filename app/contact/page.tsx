@@ -7,7 +7,7 @@ import { COMPANY } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Contact Us | Accord Knowledge Group – Payangadi Office",
   description:
-    "Contact Accord Knowledge Group for professional accounting, GST, income tax, and corporate consultancy in Eripuram, Payangadi, Kerala. Call 8547045170.",
+    "Contact Accord Knowledge Group for professional accounting, GST, income tax, and corporate consultancy in Eripuram, Payangadi, Kerala. Call 9072908710 or email accorderipuram@gmail.com.",
 };
 
 export default function ContactPage() {

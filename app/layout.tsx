@@ -95,7 +95,8 @@ export default function RootLayout({
     alternateName: "Accord Knowledge Group",
     description:
       "Professional accounting, taxation, GST, TDS, company formation, and management consultancy firm located in Eripuram, Payangadi, Kerala.",
-    telephone: ["+91-8547045170", "+91-9446489607", "0497-2985517"],
+    email: "accorderipuram@gmail.com",
+    telephone: ["+91-9072908710", "+91-9446489607", "0497-2985517"],
     address: {
       "@type": "PostalAddress",
       streetAddress: "2nd Floor, Writer's Building, Near Police Station",

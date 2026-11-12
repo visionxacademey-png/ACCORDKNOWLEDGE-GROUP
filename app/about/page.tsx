@@ -8,6 +8,7 @@ import {
   Building2,
   Landmark,
   Phone,
+  Mail,
   ArrowRight,
   MapPin,
 } from "lucide-react";
@@ -139,10 +140,22 @@ export default function AboutPage() {
                     <div>
                       <strong className="text-navy-950">Contact Numbers:</strong>
                       <div className="mt-1 space-y-1 font-mono">
-                        <p><a href="tel:+918547045170" className="hover:text-gold-600">+91 85470 45170</a></p>
+                        <p><a href={COMPANY.primaryPhone.href} className="hover:text-gold-600 font-semibold text-navy-950">+91 {COMPANY.primaryPhone.display}</a></p>
                         <p><a href="tel:+919446489607" className="hover:text-gold-600">+91 94464 89607</a></p>
                         <p><a href="tel:04972985517" className="hover:text-gold-600">0497-2985517</a></p>
                       </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-4 h-4 text-gold-600 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-navy-950">Email:</strong>
+                      <p className="mt-0.5 font-mono text-xs">
+                        <a href={`mailto:${COMPANY.email}`} className="hover:text-gold-600 text-navy-950 font-medium break-all">
+                          {COMPANY.email}
+                        </a>
+                      </p>
                     </div>
                   </div>
                 </div>

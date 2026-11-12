@@ -89,6 +89,8 @@ export default function PrivacyPolicyPage() {
               {COMPANY.address.full}
               <br />
               Phone: {COMPANY.phones.map((p) => p.number).join(", ")}
+              <br />
+              Email: {COMPANY.email}
             </address>
           </div>
         </div>

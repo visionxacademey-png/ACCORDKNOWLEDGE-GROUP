@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Phone, MapPin, ArrowRight } from "lucide-react";
+import { Phone, MapPin, ArrowRight, Mail } from "lucide-react";
 import Logo from "./Logo";
 import { COMPANY, NAV_LINKS } from "@/lib/constants";
 
@@ -110,15 +110,15 @@ export default function Footer() {
               </address>
             </div>
 
-            {/* Direct Phone Numbers */}
+            {/* Direct Phone Numbers & Email */}
             <div className="pt-2 space-y-2 text-xs sm:text-sm text-slate-300">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-gold-400 shrink-0" />
                 <a
-                  href="tel:+918547045170"
-                  className="font-mono hover:text-gold-300 transition-colors"
+                  href={COMPANY.primaryPhone.href}
+                  className="font-mono hover:text-gold-300 transition-colors font-medium"
                 >
-                  8547045170
+                  {COMPANY.primaryPhone.display}
                 </a>
               </div>
               <div className="flex items-center gap-2.5 pl-6">
@@ -136,6 +136,15 @@ export default function Footer() {
                   className="font-mono hover:text-gold-300 transition-colors"
                 >
                   0497-2985517
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5 pt-1">
+                <Mail className="w-4 h-4 text-gold-400 shrink-0" />
+                <a
+                  href={`mailto:${COMPANY.email}`}
+                  className="hover:text-gold-300 transition-colors break-all"
+                >
+                  {COMPANY.email}
                 </a>
               </div>
             </div>

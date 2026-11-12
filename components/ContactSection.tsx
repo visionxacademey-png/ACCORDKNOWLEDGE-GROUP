@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import {
   Phone,
+  Mail,
   MapPin,
   Building,
   CheckCircle,
@@ -150,10 +151,10 @@ export default function ContactSection() {
                     <div className="flex items-center justify-between pt-2">
                       <span className="text-slate-500">Mobile (Primary):</span>
                       <a
-                        href="tel:+918547045170"
+                        href={COMPANY.primaryPhone.href}
                         className="font-mono font-bold text-navy-950 hover:text-gold-600 transition-colors"
                       >
-                        8547045170
+                        {COMPANY.primaryPhone.display}
                       </a>
                     </div>
 
@@ -177,6 +178,32 @@ export default function ContactSection() {
                       </a>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Official Email Card */}
+            <div className="bg-white rounded-xl p-6 sm:p-7 border border-slate-200 shadow-card">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div className="w-full">
+                  <span className="text-xs font-bold uppercase tracking-wider text-gold-600">
+                    Email Correspondence
+                  </span>
+                  <h3 className="text-lg font-bold text-navy-950 mt-1 mb-2">
+                    Official Email
+                  </h3>
+                  <a
+                    href={`mailto:${COMPANY.email}`}
+                    className="font-medium text-navy-950 hover:text-gold-600 transition-colors text-sm break-all font-mono"
+                  >
+                    {COMPANY.email}
+                  </a>
+                  <p className="text-xs text-slate-500 mt-2">
+                    Send documents, statements, or formal consultation queries directly to our office.
+                  </p>
                 </div>
               </div>
             </div>
