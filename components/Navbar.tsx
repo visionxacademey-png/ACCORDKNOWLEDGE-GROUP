@@ -12,9 +12,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const isHome = pathname === "/";
-
-  // Throttled scroll listener using requestAnimationFrame to prevent high CPU / UI freeze
+  // Scroll listener throttled with requestAnimationFrame
   useEffect(() => {
     let ticking = false;
 
@@ -51,109 +49,84 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Determine appearance
-  const isTransparent = isHome && !isScrolled;
-
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isTransparent
-            ? "bg-navy-950/85 backdrop-blur-md border-b border-white/10 py-2.5 sm:py-3.5"
-            : "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-2.5 sm:py-3"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-2 sm:gap-4">
-            {/* Logo */}
-            <div className="min-w-0 shrink">
-              <Logo
-                variant={isTransparent ? "light" : "dark"}
-                size="md"
-                showTagline={true}
-              />
-            </div>
+      {/* Floating Pill Navbar matching the modern reference design */}
+      <header className="fixed top-2.5 sm:top-4 inset-x-3 sm:inset-x-6 z-40 max-w-7xl mx-auto transition-all duration-300">
+        <div
+          className={`w-full rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 flex items-center justify-between shadow-lg shadow-black/[0.04] border ${
+            isScrolled
+              ? "bg-white/95 backdrop-blur-md border-slate-200/90 shadow-card"
+              : "bg-white/90 backdrop-blur-md border-white/80"
+          }`}
+        >
+          {/* Left: Brand Logo */}
+          <div className="min-w-0 shrink">
+            <Logo variant="dark" size="md" showTagline={false} />
+          </div>
 
-            {/* Desktop Navigation Links */}
-            <nav
-              className="hidden lg:flex items-center space-x-1"
-              aria-label="Main Navigation"
+          {/* Desktop Navigation Links */}
+          <nav
+            className="hidden lg:flex items-center space-x-1"
+            aria-label="Main Navigation"
+          >
+            {NAV_LINKS.map((link) => {
+              const isActive =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
+
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`px-3.5 py-1.5 text-sm font-medium rounded-full transition-colors ${
+                    isActive
+                      ? "text-navy-950 bg-slate-100 font-semibold"
+                      : "text-slate-600 hover:text-navy-950 hover:bg-slate-50"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Desktop Right CTA Pill */}
+          <div className="hidden sm:flex items-center gap-3">
+            <a
+              href={COMPANY.primaryPhone.href}
+              className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold rounded-full bg-[#E86025] hover:bg-[#d4521a] text-white shadow-sm transition-all"
             >
-              {NAV_LINKS.map((link) => {
-                const isActive =
-                  pathname === link.href ||
-                  (link.href !== "/" && pathname.startsWith(link.href));
+              <Phone className="w-3.5 h-3.5 fill-white/20 text-white" />
+              <span>Call: {COMPANY.primaryPhone.display}</span>
+            </a>
+          </div>
 
-                return (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className={`px-3.5 py-2 text-sm font-medium rounded-md transition-colors ${
-                      isTransparent
-                        ? isActive
-                          ? "text-gold-400 bg-white/10"
-                          : "text-slate-200 hover:text-white hover:bg-white/5"
-                        : isActive
-                        ? "text-navy-900 bg-slate-100 font-semibold"
-                        : "text-slate-600 hover:text-navy-950 hover:bg-slate-50"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </nav>
+          {/* Mobile Right Circular Controls (Matching Reference: Circular Call Icon + Circular Menu Icon) */}
+          <div className="flex lg:hidden items-center gap-2 shrink-0">
+            {/* Circular Call Button */}
+            <a
+              href={COMPANY.primaryPhone.href}
+              className="w-9 h-9 rounded-full bg-slate-50 hover:bg-amber-50 border border-slate-200 flex items-center justify-center text-slate-700 hover:text-amber-600 shadow-xs transition-colors"
+              aria-label="Call 8547045170"
+            >
+              <Phone className="w-4 h-4 text-[#E86025]" />
+            </a>
 
-            {/* Desktop Right CTA Button */}
-            <div className="hidden sm:flex items-center gap-3">
-              <a
-                href={COMPANY.primaryPhone.href}
-                className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-md transition-all shadow-sm ${
-                  isTransparent
-                    ? "bg-gold-500 hover:bg-gold-400 text-navy-950"
-                    : "bg-navy-900 hover:bg-navy-800 text-white"
-                }`}
-              >
-                <Phone className="w-3.5 h-3.5 text-gold-300" />
-                <span>Call Now: {COMPANY.primaryPhone.display}</span>
-              </a>
-            </div>
-
-            {/* Mobile Actions: Phone Pill + Hamburger Button (Always visible together) */}
-            <div className="flex lg:hidden items-center gap-1.5 shrink-0">
-              {/* Quick Call Pill */}
-              <a
-                href={COMPANY.primaryPhone.href}
-                className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                  isTransparent
-                    ? "bg-gold-500/20 hover:bg-gold-500 text-gold-300 hover:text-navy-950 border border-gold-400/40"
-                    : "bg-navy-900 text-white hover:bg-navy-800"
-                }`}
-                aria-label="Call 8547045170"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                <span className="font-mono text-[11px] font-bold">Call</span>
-              </a>
-
-              {/* Hamburger Menu Toggle */}
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-1.5 rounded-md transition-colors ${
-                  isTransparent
-                    ? "text-slate-200 hover:text-white hover:bg-white/10"
-                    : "text-slate-700 hover:text-navy-900 hover:bg-slate-100"
-                }`}
-                aria-expanded={mobileMenuOpen}
-                aria-label="Toggle navigation menu"
-              >
-                {mobileMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
+            {/* Circular Hamburger Menu Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="w-9 h-9 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-800 shadow-xs transition-colors focus:outline-none"
+              aria-expanded={mobileMenuOpen}
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-4 h-4" />
+              ) : (
+                <Menu className="w-4 h-4" />
+              )}
+            </button>
           </div>
         </div>
       </header>
@@ -161,7 +134,7 @@ export default function Navbar() {
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-50 lg:hidden bg-navy-950/80 backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 z-50 lg:hidden bg-navy-950/70 backdrop-blur-sm transition-opacity"
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
@@ -175,10 +148,10 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 text-slate-500 hover:text-navy-950 rounded-md"
+                  className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-navy-950"
                   aria-label="Close menu"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
@@ -194,9 +167,9 @@ export default function Navbar() {
                       key={link.label}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center justify-between px-3.5 py-3 text-base rounded-md font-medium transition-colors ${
+                      className={`flex items-center justify-between px-3.5 py-3 text-base rounded-xl font-medium transition-colors ${
                         isActive
-                          ? "bg-slate-100 text-navy-950 font-semibold border-l-4 border-gold-500 pl-3.5"
+                          ? "bg-amber-50 text-amber-950 font-semibold border-l-4 border-[#E86025] pl-3.5"
                           : "text-slate-700 hover:bg-slate-50 hover:text-navy-900"
                       }`}
                     >
@@ -210,36 +183,43 @@ export default function Navbar() {
               {/* Quick Services List */}
               <div className="mt-8 pt-6 border-t border-slate-100">
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-                  Core Consultancies
+                  Core Practice Areas
                 </p>
                 <div className="grid grid-cols-1 gap-2 text-sm text-slate-600">
                   <Link
                     href="/services/accounts"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-navy-900 py-1"
+                    className="hover:text-amber-600 py-1"
                   >
                     • Accounts &amp; Bookkeeping
                   </Link>
                   <Link
                     href="/services/gst-registration"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-navy-900 py-1"
+                    className="hover:text-amber-600 py-1"
                   >
                     • GST Registration &amp; Returns
                   </Link>
                   <Link
                     href="/services/income-tax"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-navy-900 py-1"
+                    className="hover:text-amber-600 py-1"
                   >
                     • Income Tax Returns
                   </Link>
                   <Link
                     href="/services/company-llp-formation"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="hover:text-navy-900 py-1"
+                    className="hover:text-amber-600 py-1"
                   >
                     • Company &amp; LLP Formation
+                  </Link>
+                  <Link
+                    href="/services/project-report"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="hover:text-amber-600 py-1"
+                  >
+                    • Project Report for Bank Finance
                   </Link>
                 </div>
               </div>
@@ -249,9 +229,9 @@ export default function Navbar() {
             <div className="pt-6 mt-6 border-t border-slate-100">
               <a
                 href={COMPANY.primaryPhone.href}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-navy-900 hover:bg-navy-800 text-white font-semibold rounded-md shadow text-center"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#E86025] hover:bg-[#d4521a] text-white font-semibold rounded-full shadow text-center text-sm"
               >
-                <Phone className="w-4 h-4 text-gold-400" />
+                <Phone className="w-4 h-4 fill-white/20 text-white" />
                 <span>Call {COMPANY.primaryPhone.display}</span>
               </a>
               <p className="mt-3 text-xs text-center text-slate-500 leading-relaxed">
